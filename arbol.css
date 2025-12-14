@@ -1,0 +1,105 @@
+/* arbol.css: Estilos para el fondo, colores oscuros y animación de nieve */
+
+:root {
+    /* Colores para el Diseño Oscuro (se mantienen) */
+    --color-rojo-navidad: #e74c3c; /* Rojo Ladrillo/Coral */
+    --color-verde-navidad: #2ecc71; /* Verde Brillante (para luces/texto) */
+    --color-fondo-principal: #0b1c31; /* Azul marino/noche */
+    --color-dorado: #f1c40f; /* Dorado / Amarillo */
+    --color-texto-claro: #ecf0f1; /* Gris Claro */
+    --color-tarjeta-fondo: rgba(255, 255, 255, 0.05); /* Fondo semitransparente oscuro */
+}
+
+/* --- ESTILOS GLOBALES / FONDO NOCTURNO --- */
+body {
+    margin: 0;
+    font-family: 'Open Sans', Arial, sans-serif; 
+    background-color: var(--color-fondo-principal);
+    color: var(--color-texto-claro);
+    text-align: center;
+    padding-top: 50px; /* Espacio para el navbar fijo */
+    padding-bottom: 80px;
+    /* Fondo estrellado */
+    background-image: radial-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px), 
+                      radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px, 25px 25px;
+    background-position: 0 0, 15px 15px;
+    background-color: var(--color-fondo-principal);
+}
+
+.contenedor-oscuro {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* --- TÍTULOS PRINCIPALES --- */
+.titulo-principal {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4.5em; 
+    color: var(--color-dorado); 
+    text-shadow: 0 0 10px rgba(241, 196, 15, 0.8), 0 0 20px rgba(241, 196, 15, 0.5); 
+    margin: 30px auto 10px;
+}
+
+.subtitulo {
+    font-size: 1.5em;
+    color: var(--color-texto-claro);
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+/* --- ADORNO NAVIDEÑO CENTRAL --- */
+.adorno-navideno {
+    /* Usamos el color dorado para que la campana parezca de metal brillante */
+    color: var(--color-dorado); 
+    font-size: 3.5em; /* Ligeramente más grande */
+    margin-bottom: 40px;
+    text-shadow: 0 0 15px rgba(241, 196, 15, 0.9); /* Brillo dorado */
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    from { transform: scale(1) rotate(-5deg); opacity: 0.9; } /* Añadimos un pequeño movimiento de balanceo */
+    to { transform: scale(1.1) rotate(5deg); opacity: 1; }
+}
+
+
+/* --- LAYOUT PRINCIPAL (Contenido Centrado) --- */
+.contenido-principal {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.tarjetas-container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 30px;
+    max-width: 100%;
+}
+
+/* --- ANIMACIÓN DE NIEVE (JS IMPLEMENTACIÓN) --- */
+.copo {
+    position: absolute;
+    color: var(--color-texto-claro); 
+    font-size: 20px;
+    animation: caer linear infinite;
+    user-select: none;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes caer {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0.9;
+    }
+    50% {
+        transform: translateY(50vh) translateX(calc(var(--movimiento-horizontal) * 0.5));
+    }
+    100% {
+        transform: translateY(100vh) translateX(var(--movimiento-horizontal)) rotate(360deg);
+        opacity: 0.5;
+    }
+}

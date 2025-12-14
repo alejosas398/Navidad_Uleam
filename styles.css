@@ -1,0 +1,221 @@
+/* Definiciones de color para usar en styles.css */
+:root {
+    --color-rojo-navidad: #e74c3c; 
+    --color-verde-navidad: #2ecc71; 
+    --color-dorado: #f1c40f; 
+    --color-texto-claro: #ecf0f1; 
+    --color-tarjeta-fondo: rgba(255, 255, 255, 0.05); 
+    --color-borde-tarjeta: rgba(46, 204, 113, 0.5);
+}
+
+/* --- ESTILOS DE NAVEGACIÓN (HEADER) --- */
+.navbar-navidad {
+    background-color: rgba(0, 0, 0, 0.5); 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    padding: 10px 20px;
+}
+
+.nav-item {
+    color: var(--color-texto-claro);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    padding: 8px 15px;
+    margin: 0 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.nav-item i {
+    margin-right: 8px;
+    font-size: 1.1em;
+    color: var(--color-dorado);
+}
+
+.nav-item:hover {
+    background-color: var(--color-verde-navidad);
+    color: var(--color-fondo-principal);
+}
+
+/* --- MAQUETACIÓN TARJETAS --- */
+.tarjeta-item {
+    background: var(--color-tarjeta-fondo); 
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.2);
+    border: 1px solid var(--color-borde-tarjeta);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: left;
+    /* Distribución en dos columnas */
+    flex: 1 1 40%; /* Permite 2 tarjetas por fila en pantallas grandes */
+    min-width: 300px;
+}
+
+.tarjeta-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+}
+
+.tarjeta-item h2 {
+    color: var(--color-verde-navidad);
+    font-size: 1.6em;
+    margin-top: 0;
+    border-bottom: 1px solid var(--color-borde-tarjeta);
+    padding-bottom: 10px;
+}
+.tarjeta-item h2 i {
+    margin-right: 10px;
+    color: var(--color-dorado);
+}
+
+.tarjeta-item p {
+    color: var(--color-texto-claro);
+    line-height: 1.5;
+}
+
+.firma {
+    text-align: right;
+    font-style: italic;
+    color: #999;
+}
+
+/* BOTONES */
+.btn-rojo, .btn-verde {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+    color: white;
+    margin: 5px;
+}
+
+.btn-rojo { background-color: var(--color-rojo-navidad); }
+.btn-rojo:hover { background-color: #c0392b; transform: scale(1.05); }
+
+.btn-verde { background-color: var(--color-verde-navidad); }
+.btn-verde:hover { background-color: #27ae60; transform: scale(1.05); }
+
+.botones-cuenta {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+
+/* CUENTA REGRESIVA */
+.reloj-cuenta {
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.1em;
+    color: var(--color-dorado);
+    margin: 15px 0;
+    padding: 10px;
+    border: 2px solid var(--color-dorado);
+    border-radius: 10px;
+    line-height: 1.8;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.reloj-cuenta span {
+    font-size: 1.8em;
+    color: var(--color-rojo-navidad);
+    text-shadow: 0 0 5px var(--color-rojo-navidad);
+    margin: 0 5px;
+}
+
+/* --- GALERÍA/MOMENTOS NAVIDEÑOS --- */
+.galeria {
+    text-align: center;
+    margin-top: 20px;
+    /* La galería debe ocupar el ancho completo debajo de las dos tarjetas */
+    flex: 1 1 100%;
+}
+
+.galeria h2 {
+    color: var(--color-dorado);
+    border-bottom: none;
+    font-size: 1.6em;
+    padding-bottom: 0;
+}
+
+.imagenes-navidad {
+    display: flex; 
+    gap: 20px; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    margin-top: 20px;
+}
+
+.imagen-item {
+    background-color: var(--color-tarjeta-fondo);
+    border: 1px solid var(--color-borde-tarjeta);
+    padding: 20px;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.2);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.imagen-item:hover {
+    transform: scale(1.1);
+}
+
+.icono-placeholder {
+    font-size: 3em;
+    margin-bottom: 5px;
+    color: var(--color-rojo-navidad);
+}
+
+.imagen-item p {
+    font-size: 0.9em;
+    color: var(--color-texto-claro);
+    margin: 0;
+}
+
+
+/* --- FOOTER --- */
+.footer {
+    position: relative;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    color: var(--color-texto-claro);
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    z-index: 999;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.social-links a {
+    color: var(--color-dorado);
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--color-verde-navidad);
+}

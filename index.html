@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="descripcion" content="Feliz Navidad - Mensaje navideño - Felicitaciones y cuenta regresiva">
+    <title>Martin Vera.com</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="arbol.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar-navidad nav-links">
+            <a href="#inicio" id="Inicio" class="nav-item"><i class="fas fa-star"></i> Inicio</a>
+            <a href="#mensaje" id="Mensaje" class="nav-item"><i class="fas fa-envelope"></i> Mensaje</a>
+            <a href="#galeria" id="Galeria" class="nav-item"><i class="fas fa-camera"></i> Galería</a>
+            <a href="#cuenta-regresiva" id="Cuenta-Regresiva" class="nav-item"><i class="fas fa-calendar-alt"></i> Cuenta Regresiva</a>
+        </nav>
+    </header>
+
+    <main class="contenedor-oscuro">
+        
+        <div class="hero-section" id="inicio">
+            <h1 class="titulo-principal">¡Felices Fiestas!</h1>
+            <p class="subtitulo">Que la magia de la Navidad ilumine tu hogar y corazón.</p>
+
+            <div class="adorno-navideno">
+                <i class="fas fa-bell"></i>
+            </div>
+            
+            <div class="contenido-principal">
+                
+                <div class="tarjetas-container">
+                    
+                    <div class="tarjeta-item tarjeta-mensaje" id="mensaje">
+                        <h2><i class="fas fa-gift"></i> Carta Navideño</h2>
+                        <p>¡Que la paz, la alegría y la esperanza de la Navidad estén contigo y tu familia. Aprovecha estos días para compartir momentos inolvidables y crear recuerdos preciosos!</p>
+                        <p class="firma">- Tu equipo de amigos</p>
+                    </div>
+                    <div class="tarjeta-item tarjeta-mensaje" id="mensaje">
+                        <h2><i class="fas fa-gift"></i> Mensaje de esperanza</h2>
+                        <p>Que esta Navidad sea una luz en medio de cualquier oscuridad.Que traiga paz al corazón, fuerza para seguir adelante y esperanza para creer que los sueños aún pueden cumplirse.Que el amor, la unión y la fe renazcan en cada hogar.
+                        Feliz Navidad, que nunca falte la esperanza ✨🎄</p>
+                        <p class="firma">- Para los grupos de amigos</p>
+                    </div>
+                    
+                    <div class="tarjeta-item tarjeta-cuenta" id="cuenta-regresiva">
+                        <h2><i class="fas fa-calendar-alt"></i> Cuenta Regresiva para Navidad</h2>
+                        <div id="reloj-cuenta" class="reloj-cuenta">
+                            <span id="dias">00</span> Días : 
+                            <span id="horas">00</span> Horas : 
+                            <span id="minutos">00</span> Mins : 
+                            <span id="segundos">00</span> Segs
+                        </div>
+                        <div class="botones-cuenta">
+                            <button class="btn-rojo">Leer más</button>
+                            <button class="btn-verde" id="btnAbrirFormulario">Enviar un texto</button>
+                        </div>
+                        <div id="formularioMensaje" style="display: none; padding-top: 15px;">
+                            <textarea id="areaMensaje" placeholder="Escribe tu mensaje navideño aquí (máximo 20 palabras)..." maxlength="150" rows="4" style="width: 95%; resize: vertical; border-radius: 5px; padding: 5px; border: 1px solid #ccc; background-color: #f8f8f8;"></textarea>
+                            <button class="btn-rojo" id="btnEnviarFinal">Enviar Mensaje</button>
+                        </div>
+                    </div>
+
+                    <section class="galeria" id="galeria">
+                        <h2><i class="fas fa-star"></i> Palabras Navideñas</h2>
+                        <div class="imagenes-navidad">
+                            
+                            <div class="imagen-item">
+                                <div class="icono-placeholder"><i class="fas fa-star-and-crescent"></i></div>
+                                <p>Paz y Tranquilidad</p>
+                            </div>
+                            
+                            <div class="imagen-item">
+                                <div class="icono-placeholder"><i class="fas fa-snowman"></i></div>
+                                <p>Alegría y Armonía</p>
+                            </div>
+                            
+                            <div class="imagen-item">
+                                <div class="icono-placeholder"><i class="fas fa-hands-helping"></i></div>
+                                <p>Generosidad</p>
+                            </div>
+                            
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2023 ¡Feliz Navidad y Próspero Año Nuevo!</p>
+        <div class="social-links">
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Lógica de la Cuenta Regresiva
+        function actualizarCuentaRegresiva() {
+            let añoActual = new Date().getFullYear();
+            let fechaNavidad = new Date(añoActual, 11, 25).getTime();
+            let ahora = Date.now();
+            let diferencia = fechaNavidad - ahora;
+            
+            if (diferencia < 0) {
+                fechaNavidad = new Date(añoActual + 1, 11, 25).getTime();
+                diferencia = fechaNavidad - ahora;
+                if (diferencia < 0) {
+                    const reloj = document.getElementById("reloj-cuenta");
+                    if (reloj) reloj.innerHTML = "<span class='feliz-navidad'>¡Feliz Navidad!</span>";
+                    return;
+                }
+            }
+
+            const segundos = 1000;
+            const minutos = segundos * 60;
+            const horas = minutos * 60;
+            const dias = horas * 24;
+
+            const d = Math.floor(diferencia / dias).toString().padStart(2, '0');
+            const h = Math.floor((diferencia % dias) / horas).toString().padStart(2, '0');
+            const m = Math.floor((diferencia % horas) / minutos).toString().padStart(2, '0');
+            const s = Math.floor((diferencia % minutos) / segundos).toString().padStart(2, '0');
+
+            const relojHTML = `
+                <span id="dias">${d}</span> Días : 
+                <span id="horas">${h}</span> Horas : 
+                <span id="minutos">${m}</span> Mins : 
+                <span id="segundos">${s}</span> Segs
+            `;
+            const reloj = document.getElementById("reloj-cuenta");
+            if (reloj) reloj.innerHTML = relojHTML;
+        }
+
+        setInterval(actualizarCuentaRegresiva, 1000);
+        actualizarCuentaRegresiva();
+        
+        // Lógica del Formulario de Mensaje
+        document.addEventListener('DOMContentLoaded', () => {
+    
+            const btnAbrir = document.getElementById('btnAbrirFormulario'); 
+            const formulario = document.getElementById('formularioMensaje');
+            const areaMensaje = document.getElementById('areaMensaje');
+            const btnEnviarFinal = document.getElementById('btnEnviarFinal');
+
+            btnAbrir.addEventListener('click', () => {
+                if (formulario.style.display === 'none' || formulario.style.display === '') {
+                    formulario.style.display = 'block';
+                    areaMensaje.focus(); // Enfoca el área de texto para que el usuario pueda escribir de inmediato
+                } else {
+                    formulario.style.display = 'none';
+                }
+            });
+
+            btnEnviarFinal.addEventListener('click', () => {
+                const texto = areaMensaje.value.trim();
+                const palabras = texto.split(/\s+/).filter(word => word.length > 0); 
+                const limitePalabras = 20;
+
+                if (palabras.length === 0) {
+                    alert('Por favor, escribe un mensaje.');
+                } else if (palabras.length > limitePalabras) {
+                    alert(`El mensaje tiene ${palabras.length} palabras. El límite es de ${limitePalabras} palabras. Por favor, acorta tu mensaje.`);
+                } else {
+                    alert(`¡Mensaje enviado con éxito a tus contactos!\n\nTu mensaje (${palabras.length} palabras):\n"${texto}"`);
+                    areaMensaje.value = '';
+                    formulario.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+    <script type="module" src="animacion.js"></script>
+</body>
+</html>
